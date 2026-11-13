@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff8f4"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" href="icon.png"><link rel="manifest" href="app.webmanifest"><link rel="stylesheet" href="style.css"><title>小伴日记 · 比熊版</title>
+<body><div class="shell"><header><div class="brand"><img src="icon.png" alt=""><span>小伴日记 · 比熊版<small>BICHON DAYS</small></span></div><button id="wallet" class="wallet" data-tab="shop">✦ <span id="points">0</span> 积分</button></header>
+<main>
+<aside class="card user-level" aria-label="用户等级">
+  <div><strong id="userLevel"></strong><p>每完成 10 个任务或累计专注 5 小时升一级</p></div>
+  <div class="level-stats"><span id="taskLevelProgress"></span><span id="focusLevelProgress"></span></div>
+</aside>
+<section id="plan"><article class="hero"><div class="intro"><p id="todayLabel"></p><h1>每日计划</h1><p>把想做的事，变成今天的小进步。</p></div><button type="button" class="bichon-hero" data-pet-action aria-label="摸摸棉花糖"><img src="bichon.jpg" data-pet-image="named" alt="棉花糖"></button><span class="spark s1">✦</span><span class="spark s2">✧</span></article>
+<div class="dates" id="week"></div><div class="bar"><button id="today" class="quiet">回到今天</button><label class="pick">选日期 <input id="datePick" type="date"></label></div>
+<div class="section-title"><div><h2>任务清单</h2><p id="summary"></p></div><button id="add" class="primary">＋ 新任务</button></div><div class="track"><div id="progress"></div></div><div id="tasks"></div>
+<div class="section-title"><div><h2>任务模板</h2><p>常做的事，下次一键安排</p></div></div><div id="templates"></div></section>
+<section id="focus" hidden><article class="hero short"><div class="intro"><p>FOCUS TIME</p><h1>自律模式</h1><p>每累计专注 1 小时，获得 1 积分</p></div><button type="button" class="bichon-hero" data-pet-action aria-label="摸摸棉花糖"><img src="bichon.jpg" data-pet-image="named" alt="棉花糖"></button></article><div class="timer card"><div class="dial"><p id="mode">准备开始</p><strong id="elapsed">00:00:00</strong></div><div id="timerActions"></div><p id="focusTotal"></p></div><div id="history"></div></section>
+<section id="shop" hidden><article class="hero short"><div class="intro"><p>BUDDY SHOP</p><h1>陪伴商店</h1><p>兑换草莓，给棉花糖加餐。</p></div><span class="spark s1">✦</span></article><div id="petShop" class="pet-grid"></div><article class="card custom-panel">
+  <div class="section-title"><div><h2>自定义宠物</h2><p id="customStatus"></p></div><button id="editCustom" class="primary">创建宠物</button></div>
+  <div id="customSlot"></div>
+</article><article class="product card"><div class="section-title"><div><h2>🍓 草莓</h2><p>陪伴物的食物 · 每颗 +2 好感度</p></div><strong>✦ 1 积分</strong></div><p id="foodStock"></p><button id="foodBuy" class="primary wide">兑换 1 颗草莓</button></article></section>
+<article id="care" class="card care" hidden>
+  <div class="care-profile">
+    <button type="button" class="pet-look pet-portrait" data-pet-action aria-label="摸摸棉花糖"><img src="bichon.jpg" data-pet-image="named" alt="棉花糖"><span class="pet-hat" aria-hidden="true"></span></button>
+    <div class="care-details">
+      <h2><span id="careName">我的陪伴</span> <span id="petLevel"></span></h2>
+      <p id="petXp"></p><div class="track"><div id="petProgress"></div></div>
+      <p>累计陪伴专注 5 分钟 +1 好感度</p>
+    </div>
+  </div>
+  <div class="care-feed"><button id="feed" class="primary">🍓 喂草莓</button><p id="feedCount"></p><button id="foodLink" class="quiet" data-tab="shop" hidden>去商店兑换草莓</button></div>
+  <h3>头饰</h3><div id="hats" class="hats"></div>
+</article>
+<button id="petFloat" class="pet-float" data-pet-action aria-label="和陪伴物打招呼" hidden>
+  <span class="pet-look"><img src="bichon.jpg" data-pet-image alt=""><span class="pet-hat" aria-hidden="true"></span></span>
+</button>
+<aside id="companion" class="card companion" hidden><img src="bichon.jpg" data-pet-image alt=""><div><b id="quoteName">陪伴物说</b><p id="quote"></p><div class="quoteActions"><button id="shuffle" class="quiet">↻ 换一句</button><button id="speak" class="quiet">◖ 朗读</button></div><label><input id="voice" type="checkbox"> 自动朗读</label></div></aside>
+<p class="photo-credit">比熊照片来自 <a id="photoCredit" href="https://paradepets.com/dogs/happiest-dog-breeds" target="_blank" rel="noopener">Parade Pets</a></p></main><nav aria-label="主导航"><button data-tab="plan" aria-current="page"><i>▤</i>每日计划</button><button data-tab="focus"><i>◷</i>自律模式</button><button data-tab="shop"><i>♧</i>陪伴商店</button></nav></div>
+<dialog id="customEditor" aria-labelledby="customTitle">
+  <form id="customForm">
+    <div class="section-title"><h2 id="customTitle">自定义宠物</h2><button id="closeCustom" type="button" class="quiet" aria-label="关闭">✕</button></div>
+    <label>宠物名字<input id="customName" maxlength="20" required placeholder="给它取个名字"></label>
+    <label>宠物图片<input id="customImage" type="file" accept="image/*" aria-describedby="imageHelp"></label>
+    <p id="imageHelp">建议用正方形图片，最大 20 MB。图片仅保存在当前设备。</p>
+    <p id="customError" role="alert"></p>
+    <button id="saveCustom" class="primary wide" type="submit">保存宠物</button>
+  </form>
+</dialog><dialog id="editor"><form id="form"><div class="section-title"><h2 id="editorTitle">新任务</h2><button type="button" id="close" class="quiet" aria-label="关闭">✕</button></div><label>做什么<input id="taskName" required maxlength="80" placeholder="例如：复习英语单词"></label><div class="fields"><label>日期<input id="taskDate" type="date" required></label><label>时间<input id="taskTime" type="time" required></label></div><button class="primary wide" type="submit">保存任务</button></form></dialog><div id="toast" role="status"></div><script src="app.js"></script></body></html>
